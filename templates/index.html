@@ -9,14 +9,17 @@
   <link href="css/style.css" rel="stylesheet" type="text/css" />
   <link href="css/style1.css" rel="stylesheet" type="text/css" />
   <script src="http://code.jquery.com/jquery-latest.js "></script>
+  <script src="api.js"></script>
   <script type="text/javascript"> 
     $(document).ready(function()
     {
         $("#indices").load("load.php");
-        setInterval(function(){$("#indices").load("load.php")},2000);
+        console.log("php loading");
+        setInterval(function(){$("#indices").load("load.php");console.log("php loading");},2000);
         
     }) // refreshing after every 15000 milliseconds 
 </script> 
+
 
  
 </head> 
@@ -47,10 +50,10 @@
     <div class="row">
       <div class="col-lg-3 col-sm-6">
           <div class="card gradient-1">
-              <div class="card-body">
+              <div class="card-body" >
                   <h3 class="card-title text-white">NIFTY</h3>
                   <div class="d-inline-block">
-                      <h2 class="text-white">{{nifty}}</h2>
+                      <h2 class="text-white" id="nifty">{{nifty}}</h2>
                   </div>
                   <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
               </div>
@@ -62,7 +65,7 @@
                   <h3 class="card-title text-white">SENSEX</h3>
                   <div class="d-inline-block">
                       
-                      <h2 class="text-white">{{sensex}}</h2>
+                      <h2 class="text-white" id="sensex">{{sensex}}</h2>
                    
                   </div>
                   <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>

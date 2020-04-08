@@ -2,7 +2,7 @@ import csv
 import pandas as pd 
 import requests
 from bs4 import BeautifulSoup
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 app=Flask(__name__)
 def get_usd():
      names=[]
@@ -45,10 +45,11 @@ def get_nifty_sensex():
      return([i_prices[0],i_prices[1]])
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index1():
      usd=get_usd()
      nifty_sensex=get_nifty_sensex()
+     print([usd,nifty_sensex[0],nifty_sensex[1]])
      return(render_template("index.html",usd=usd,sensex=nifty_sensex[1],nifty=nifty_sensex[0]))
 
 
