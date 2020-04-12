@@ -41,7 +41,7 @@ def get_nifty_sensex():
                for price in srow.find_all('td', attrs={'class':'data-col2'}):
                     i_prices.append(price.text)    
      
-     # print(pd.DataFrame({"Names": i_names, "Prices": i_prices}))
+     print(pd.DataFrame({"Names": i_names, "Prices": i_prices}))
      return([i_prices[0],i_prices[1]])
 
 
@@ -50,7 +50,7 @@ def index1():
      usd=get_usd()
      nifty_sensex=get_nifty_sensex()
      print([usd,nifty_sensex[0],nifty_sensex[1]])
-     return(render_template("index.html",usd=usd,sensex=nifty_sensex[1],nifty=nifty_sensex[0]))
+     return(render_template("index.html",usd=usd,sensex=nifty_sensex[0],nifty=nifty_sensex[1]))
 
 
 if (__name__=="__main__"):
