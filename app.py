@@ -3,6 +3,13 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, render_template, jsonify
+import numpy as np
+import datetime
+import matplotlib.pyplot as plt
+from sklearn.svm import SVR
+from sklearn.model_selection import train_test_split 
+
+
 app=Flask(__name__)
 def get_usd():
      names=[]
@@ -52,6 +59,94 @@ def index1():
      print([usd,nifty_sensex[0],nifty_sensex[1]])
      return(render_template("index.html",usd=usd,sensex=nifty_sensex[0],nifty=nifty_sensex[1]))
 
+@app.route('/static/stock1')
+def stock1():
+
+     df=pd.read_csv("FB.csv")
+     dates=[]
+     
+
+     df_date=df.loc[:,'Date']
+     df_close=df.loc[:,'Close']
+     df['Date'] = pd.to_datetime(df['Date'])
+     df_date_pred=df.loc[:,'Date']
+     for date in df_date_pred:
+          dates.append(date.toordinal())
+     df_date=list(df_date)
+     df_date.append('2020-05-01')
+     df_close=list(df_close)
+     max_price=max(df_close)
+     min_price=min(df_close)
+     
+     
+     dates=np.array(dates)
+     dates=dates.reshape(-1,1)
+     dates_test=[dates[-1]+30]
+
+
+     svr_lin=SVR(kernel='rbf',degree=10,C=1e3)
+     svr_lin.fit(dates,df_close)
+     predictions=svr_lin.predict(dates_test)
+     print(predictions)
+     pred_price=predictions[-1]
+     for i in predictions:
+          df_close.append(i)
+    
+     return(jsonify({'dates':df_date,
+     'close':df_close,
+     'max_price':max_price,
+     'min_price':min_price,
+     'pred_price':pred_price}  ))
+
+
+
+@app.route('/static/stock2')
+def stock2():
+     '''df=pd.read_csv("MSFT.csv")
+     df_date=list(df.loc[:,'Date'])
+     df_close=list(df.loc[:,'Close'])
+     max_price=max(df_close)
+     min_price=min(df_close)
+
+     return(jsonify({'dates':df_date,
+     'close':df_close,
+     'max_price':max_price,
+     'min_price':min_price}))'''
+     df=pd.read_csv("MSFT.csv")
+     dates=[]
+     
+
+     df_date=df.loc[:,'Date']
+     df_close=df.loc[:,'Close']
+     df['Date'] = pd.to_datetime(df['Date'])
+     df_date_pred=df.loc[:,'Date']
+     for date in df_date_pred:
+          dates.append(date.toordinal())
+     df_date=list(df_date)
+     df_date.append('2020-05-01')
+     df_close=list(df_close)
+     max_price=max(df_close)
+     min_price=min(df_close)
+     
+     
+     dates=np.array(dates)
+     dates=dates.reshape(-1,1)
+     dates_test=[dates[-1]+30]
+
+
+     svr_lin=SVR(kernel='rbf',degree=10,C=1e3)
+     svr_lin.fit(dates,df_close)
+     predictions=svr_lin.predict(dates_test)
+     print(predictions)
+     pred_price=predictions[-1]
+     for i in predictions:
+          df_close.append(i)
+    
+     return(jsonify({'dates':df_date,
+     'close':df_close,
+     'max_price':max_price,
+     'min_price':min_price,
+     'pred_price':pred_price}  ))
 
 if (__name__=="__main__"):
      app.run()

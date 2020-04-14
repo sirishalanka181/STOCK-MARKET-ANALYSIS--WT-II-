@@ -16,9 +16,10 @@ prices=[]
 df['Date'] = pd.to_datetime(df['Date'])
 df_date=df.loc[:,'Date']
 df_close=df.loc[:,'Close']
-
+ori_dates=[]
 for date in df_date:
     dates.append(date.toordinal())
+    ori_dates.append(date)
 for close_price in df_close:
     prices.append(close_price)
 
@@ -28,14 +29,17 @@ print(prices)
 dates=np.array(dates)
 dates=dates.reshape(-1,1)
 dates_test=[]
-for i in range(730):
+ori_test=[]
+for i in range(30):
     dates_test.append(dates[-1]+i)
+    
+
 print(dates_test)
 
 svr_lin=SVR(kernel='rbf',degree=10,C=1e3)
 svr_lin.fit(dates,prices)
-plt.scatter(dates,prices,color="black",label="Data")
-plt.scatter(dates_test,svr_lin.predict(dates_test),color="red",label="SVR")
+plt.plot(ori_dates,prices,color="black",label="Data")
+plt.plot(dates_test,svr_lin.predict(dates_test),color="red",label="SVR")
 plt.xlabel="Date"
 plt.ylabel="Price"
 plt.legend()
