@@ -102,16 +102,6 @@ def stock1():
 
 @app.route('/static/stock2')
 def stock2():
-     '''df=pd.read_csv("MSFT.csv")
-     df_date=list(df.loc[:,'Date'])
-     df_close=list(df.loc[:,'Close'])
-     max_price=max(df_close)
-     min_price=min(df_close)
-
-     return(jsonify({'dates':df_date,
-     'close':df_close,
-     'max_price':max_price,
-     'min_price':min_price}))'''
      df=pd.read_csv("MSFT.csv")
      dates=[]
      
