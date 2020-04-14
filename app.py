@@ -94,9 +94,9 @@ def stock1():
     
      return(jsonify({'dates':df_date,
      'close':df_close,
-     'max_price':max_price,
-     'min_price':min_price,
-     'pred_price':pred_price}  ))
+     'max_price':round(max_price,5),
+     'min_price':round(min_price,5),
+     'pred_price':round(pred_price,5)}  ))
 
 
 
@@ -144,9 +144,9 @@ def stock2():
     
      return(jsonify({'dates':df_date,
      'close':df_close,
-     'max_price':max_price,
-     'min_price':min_price,
-     'pred_price':pred_price}  ))
+     'max_price':round(max_price,5),
+     'min_price':round(min_price,5),
+     'pred_price':round(pred_price,5)}  ))
 
 if (__name__=="__main__"):
      app.run()
