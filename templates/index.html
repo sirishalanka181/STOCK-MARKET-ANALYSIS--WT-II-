@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SMA</title>
+  <base href="/static/">  <meta http-equiv="refresh" content="2000"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/style1.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script src="http://code.jquery.com/jquery-latest.js "></script>
+  
+ 
+</head> 
+
+
+
+<body>
+  <header>
+    <div class="wrap">
+        <!-- logo -->
+        <a href="#!"><img class="logo" src="images/logo.png" /></a>
+
+        <!-- navigation menu -->
+        <nav>
+            <ul>
+                <li><a id="signinBtn" href="page-login.html" >Sign-In</a></li>
+                <li><a id="registerBtn" href="page-register.html">Register</a></li>
+                <li><a id="aboutBtn" href="pages/about.html">About</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>    
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+          <div class="card gradient-1">
+              <div class="card-body" >
+                  <h3 class="card-title text-white">NIFTY</h3>
+                  <div class="d-inline-block">
+                      <h2 class="text-white" id="nifty"></h2>
+                  </div>
+                  <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+          <div class="card gradient-2">
+              <div class="card-body">
+                  <h3 class="card-title text-white">SENSEX</h3>
+                  <div class="d-inline-block">
+                      
+                      <h2 class="text-white" id="sensex"></h2>
+                   
+                  </div>
+                  <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+              </div>
+          </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+          <div class="card gradient-3">
+              <div class="card-body">
+                  <h3 class="card-title text-white">DOLLAR-RUPEE</h3>
+                  <div class="d-inline-block">
+                      <h2 class="text-white" id="usd"></h2>
+                      
+                  </div>
+                  <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
+              </div>
+          </div>
+                 
+          
+      </div>
+      <div class="col-lg-3 col-sm-6">
+          <div class="card gradient-4">
+              <div class="card-body">
+                  <h3 class="card-title text-white">Customer Satisfaction</h3>
+                  <div class="d-inline-block">
+                      <h2 class="text-white">99%</h2>
+                   
+                  </div>
+                  <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
+              </div>
+          </div>
+      </div>
+      <script src="api.js"></script>
+  </div>
+  <app-root></app-root>
+  <div id="indices"></div>
+ 
+<script src="runtime-es2015.js" type="module"></script><script src="runtime-es5.js" nomodule defer></script><script src="polyfills-es5.js" nomodule defer></script><script src="polyfills-es2015.js" type="module"></script><script src="styles-es2015.js" type="module"></script><script src="styles-es5.js" nomodule defer></script><script src="vendor-es2015.js" type="module"></script><script src="vendor-es5.js" nomodule defer></script><script src="main-es2015.js" type="module"></script><script src="main-es5.js" nomodule defer></script></body>
+</html>
