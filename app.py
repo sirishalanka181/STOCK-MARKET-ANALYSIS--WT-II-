@@ -54,12 +54,19 @@ def get_nifty_sensex():
 
 @app.route('/', methods=['GET'])
 def index1():
+     return(render_template("index.html"))
+    
+@app.route('/data',methods=['GET'])
+def data():
+     print("here")
      usd=get_usd()
      nifty_sensex=get_nifty_sensex()
      print([usd,nifty_sensex[0],nifty_sensex[1]])
-     return(render_template("index.html",usd=usd,sensex=nifty_sensex[0],nifty=nifty_sensex[1]))
+     return(jsonify({'nifty':nifty_sensex[1],
+     'sensex':nifty_sensex[0],
+     'usd':usd} ))
 
-@app.route('/static/stock1')
+@app.route('/static/stock1',methods=['GET'])
 def stock1():
 
      df=pd.read_csv("FB.csv")
@@ -100,7 +107,7 @@ def stock1():
 
 
 
-@app.route('/static/stock2')
+@app.route('/static/stock2',methods=['GET'])
 def stock2():
      df=pd.read_csv("MSFT.csv")
      dates=[]

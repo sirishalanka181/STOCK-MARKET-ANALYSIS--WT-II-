@@ -10,16 +10,7 @@
   <link href="css/style1.css" rel="stylesheet" type="text/css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <script src="http://code.jquery.com/jquery-latest.js "></script>
-  <script src="api.js"></script>
-  <script type="text/javascript"> 
-    $(document).ready(function()
-    {
-        $("#indices").load("load.php");
-        console.log("php loading");
-        setInterval(function(){$("#indices").load("load.php");console.log("php loading");},2000);
-        
-    }) // refreshing after every 15000 milliseconds 
-</script> 
+  
  
 </head> 
 
@@ -47,7 +38,7 @@
               <div class="card-body" >
                   <h3 class="card-title text-white">NIFTY</h3>
                   <div class="d-inline-block">
-                      <h2 class="text-white" id="nifty">{{nifty}}</h2>
+                      <h2 class="text-white" id="nifty"></h2>
                   </div>
                   <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
               </div>
@@ -59,7 +50,7 @@
                   <h3 class="card-title text-white">SENSEX</h3>
                   <div class="d-inline-block">
                       
-                      <h2 class="text-white" id="sensex">{{sensex}}</h2>
+                      <h2 class="text-white" id="sensex"></h2>
                    
                   </div>
                   <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
@@ -71,7 +62,7 @@
               <div class="card-body">
                   <h3 class="card-title text-white">DOLLAR-RUPEE</h3>
                   <div class="d-inline-block">
-                      <h2 class="text-white" id="usd">{{usd}}</h2>
+                      <h2 class="text-white" id="usd"></h2>
                       
                   </div>
                   <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
@@ -92,6 +83,7 @@
               </div>
           </div>
       </div>
+      <script src="api.js"></script>
   </div>
   <app-root></app-root>
   <div id="indices"></div>

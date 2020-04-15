@@ -1,15 +1,15 @@
 
-function OpenRequest() {
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status ==200 )
+function OpenRequest()
+  {
+    console.log("fetched");
+    var getData= $.get('/data');
+    getData.done(function(results)
     {
-      console.log("fetched");
-    }
-  };
-  xhttp.open("GET", "http://localhost:5000/", true);
-  xhttp.send();
-}
+      document.getElementById("nifty").innerHTML=results.nifty;
+      document.getElementById("sensex").innerHTML=results.sensex;
+      document.getElementById("usd").innerHTML=results.usd;
+    });
+  }
+
 OpenRequest();
 setInterval(OpenRequest, 2000);
-
